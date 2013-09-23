@@ -43,3 +43,39 @@ Licensed under the MIT license.
     - Security concern: Anyone outside of the VPC will be able to
       communicate with this process.
 
+## Model:
+
+  Client: 
+    * CS object created by client
+    * CS specs read from hidden JSON file called .ChappySinclair.json- eventually, just using Obj notation
+      throughout for now
+    * Each 'command' to be run is an Object:
+
+    {
+      id : "",
+      exec : "",
+      success : function(){
+        // Return value determines what to do on success
+        // Return "RESTART" to restart
+        // Return another id like "#_id" to launch that process
+      },
+      error   : function(){}
+    }
+
+  SuperClass:
+    * CS server launched
+      * Internal processes read from Objects
+      * Local log caches prepared, synced to disk, should function like Object
+        store
+    * Waits on port
+    * When polled, reads from GET/POST - eventually, just GET now 
+      * Returns data as JSON
+    * Routes
+      * / - Default
+      * /run
+      * 
+
+## TODO:
+  * Model out Chappy
+  * Boot app that issues terminal commands and stores their std-in
+  
